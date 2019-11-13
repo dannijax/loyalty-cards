@@ -19,7 +19,7 @@ class Merchant(val id: UUID? = MerchantId.randomUUID(), override var schemes: Li
             var stampsGiven = 0
             val applicableItems = canSchemeBeApplied(receipt.items, scheme.skus)
             applicableItems.forEachIndexed { index, item ->
-
+                //avoid applying multiple schemes to the same item
                 if (!sortedItems.contains(item)) {
                     stampsGiven += stampsGenerated(item)
                 }
